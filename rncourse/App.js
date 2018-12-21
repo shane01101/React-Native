@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import PlaceInput from './src/components/PlaceInput/PlaceInput';
 import PlaceList from './src/components/PlaceList/PlaceList';
-import placeImage from './src/assets/austin.jpg';
+//import placeImage from './src/assets/austin.jpg';
 
 export default class App extends Component {
 	state = {
@@ -16,7 +16,10 @@ export default class App extends Component {
 				places: prevState.places.concat({
 					key: Math.random(),
 					name: placeName,
-					image: placeImage
+					image: {
+						uri:
+							'https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/5/d9/5d98d439-171f-5e9e-9b93-c8c08fe9bae2/5bcbee0ccae58.image.jpg?resize=400%2C277'
+					}
 				})
 			};
 		});
