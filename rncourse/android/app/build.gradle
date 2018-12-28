@@ -95,7 +95,7 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion '28.0.3'
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.rncourse"
@@ -154,4 +154,4 @@ project.ext.vectoricons = [
     iconFontNames: [ 'Ionicons.ttf'] // Name of the font files you want to copy
 ]
  
-apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"le"
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
