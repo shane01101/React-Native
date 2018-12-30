@@ -1,16 +1,10 @@
-import {
-	ADD_PLACE,
-	DELETE_PLACE,
-	SELECT_PLACE,
-	DESELECT_PLACE
-} from '../actions/actionTypes';
+import { ADD_PLACE, DELETE_PLACE } from '../actions/actionTypes';
 
-const inititalState = {
-	places: [],
-	selectedPlace: null
+const initialState = {
+	places: []
 };
 
-const reducer = (state = inititalState, action) => {
+const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_PLACE:
 			return {
@@ -19,8 +13,7 @@ const reducer = (state = inititalState, action) => {
 					key: Math.random(),
 					name: action.placeName,
 					image: {
-						uri:
-							'https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/5/d9/5d98d439-171f-5e9e-9b93-c8c08fe9bae2/5bcbee0ccae58.image.jpg?resize=400%2C277'
+						uri: 'https://c1.staticflickr.com/5/4096/4744241983_34023bf303_b.jpg'
 					}
 				})
 			};
@@ -28,21 +21,8 @@ const reducer = (state = inititalState, action) => {
 			return {
 				...state,
 				places: state.places.filter(place => {
-					return place.key !== state.selectedPlace.key;
-				}),
-				selectedPlace: null
-			};
-		case SELECT_PLACE:
-			return {
-				...state,
-				selectedPlace: state.places.find(place => {
-					return place.key == action.placeKey;
+					return place.key !== action.placeKey;
 				})
-			};
-		case DESELECT_PLACE:
-			return {
-				...state,
-				selectedPlace: null
 			};
 		default:
 			return state;
