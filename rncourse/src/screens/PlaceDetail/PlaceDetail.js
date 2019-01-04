@@ -7,8 +7,8 @@ import { deletePlace } from '../../store/actions/index';
 
 class PlaceDetail extends Component {
 	state = {
-		viewMode = 'portrait'
-	}
+		viewMode: 'portrait'
+	};
 
 	constructor(props) {
 		super(props);
@@ -16,12 +16,12 @@ class PlaceDetail extends Component {
 	}
 
 	componentWillUnmount() {
-		Dimensions.removeEventListener('change', updateStyles);
+		Dimensions.removeEventListener('change', this.updateStyles);
 	}
 
 	updateStyles = dims => {
 		this.setState({
-			viewMode: dims.window.height > 600 ? 'portrait' : 'landscape'
+			viewMode: dims.window.height > 500 ? 'portrait' : 'landscape'
 		});
 	};
 
@@ -32,12 +32,10 @@ class PlaceDetail extends Component {
 
 	render() {
 		return (
-			<View 
+			<View
 				style={[
-					styles.container, 
-					this.state.viewMode === 'portrait' 
-						? styles.portraitContainer 
-						: styles.landscapeContainer
+					styles.container,
+					this.state.viewMode === 'portrait' ? styles.portraitContainer : styles.landscapeContainer
 				]}
 			>
 				<View style={styles.subContainer}>
@@ -52,7 +50,7 @@ class PlaceDetail extends Component {
 							<View style={styles.deleteButton}>
 								<Icon
 									size={30}
-									name={Platform.OS == 'android' ? 'md-trash' : 'ios-trash'}
+									name={Platform.OS === 'android' ? 'md-trash' : 'ios-trash'}
 									color="red"
 								/>
 							</View>
