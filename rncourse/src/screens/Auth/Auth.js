@@ -10,7 +10,30 @@ import backgroundImage from '../../assets/background.jpg';
 
 class AuthScreen extends Component {
 	state = {
-		viewMode: Dimensions.get('window').height > 500 ? 'portrait' : 'landscape'
+		viewMode: Dimensions.get('window').height > 500 ? 'portrait' : 'landscape',
+		controls: {
+			email: {
+				value: '',
+				valid: false,
+				validationRules: {
+					isEmail: true
+				}
+			},
+			password: {
+				value: '',
+				valid: false,
+				validationRules: {
+					minLength: 6
+				}
+			},
+			confirmPassword: {
+				value: '',
+				valid: false,
+				validationRules: {
+					equalTo: 'password'
+				}
+			}
+		}
 	};
 
 	constructor(props) {
@@ -32,6 +55,20 @@ class AuthScreen extends Component {
 		startMainTabs();
 	};
 
+	updateInputState = (key, value) => {
+		this.setState(prevState => {
+			return {
+				controls: {
+					...prevState.controls,
+					[key]: {
+						...prevState.controls[key],
+						value: value
+					}
+				}
+			};
+		});
+	};
+
 	render() {
 		let headingText = null;
 
@@ -50,7 +87,12 @@ class AuthScreen extends Component {
 						Switch to Login
 					</ButtonWithBackground>
 					<View style={styles.inputContainer}>
-						<DefaultInput placeholder="Your E-Mail Address" style={styles.input} />
+						<DefaultInput
+							placeholder="Your E-Mail Address"
+							style={styles.input}
+							value={this.state.controls.email.value}
+							onChangeText={val => this.updateInputState('email', val)}
+						/>
 						<View
 							style={
 								this.state.viewMode === 'portrait'
@@ -65,7 +107,12 @@ class AuthScreen extends Component {
 										: styles.landscapePasswordWrapper
 								}
 							>
-								<DefaultInput placeholder="Password" style={styles.input} />
+								<DefaultInput
+									placeholder="Password"
+									style={styles.input}
+									value={this.state.controls.password.value}
+									onChangeText={val => this.updateInputState('password', val)}
+								/>
 							</View>
 							<View
 								style={
@@ -74,7 +121,12 @@ class AuthScreen extends Component {
 										: styles.landscapePasswordWrapper
 								}
 							>
-								<DefaultInput placeholder="Confirm Password" style={styles.input} />
+								<DefaultInput
+									placeholder="Confirm Password"
+									style={styles.input}
+									value={this.state.controls.confirmPassword.value}
+									onChangeText={val => this.updateInputState('confirmPassword', val)}
+								/>
 							</View>
 						</View>
 					</View>
