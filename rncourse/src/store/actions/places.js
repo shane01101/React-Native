@@ -1,7 +1,6 @@
 import { SET_PLACES } from './actionTypes';
 import { uiStartLoading, uiStopLoading } from './index';
 
-//1/15 @ 11:32 storeImage uploads Image
 export const addPlace = (placeName, location, image) => {
 	console.log('image', image);
 	return dispatch => {
