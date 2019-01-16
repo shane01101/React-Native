@@ -17,28 +17,28 @@ export const addPlace = (placeName, location, image) => {
 				dispatch(uiStopLoading());
 			})
 			.then(res => res.json())
-			.catch(err => console.log('2nd error', err));
-		// .then(parsedRes => {
-		// 	const placeData = {
-		// 		name: placeName,
-		// 		location: location,
-		// 		image: parsedRes.imageUrl
-		// 	};
-		// 	return fetch('https://awesome-places-1546892091767.firebaseio.com/places.json', {
-		// 		method: 'POST',
-		// 		body: JSON.stringify(placeData)
-		// 	});
-		// })
-		// .catch(err => {
-		// 	console.log(err);
-		// 	alert('Something went wrong, please try again!');
-		// 	dispatch(uiStopLoading());
-		// })
-		// .then(res => res.json())
-		// .then(parsedRes => {
-		// 	console.log(parsedRes);
-		// 	dispatch(uiStopLoading());
-		// });
+			// .catch(err => console.log('2nd error', err));
+			.then(parsedRes => {
+				const placeData = {
+					name: placeName,
+					location: location,
+					image: parsedRes.imageUrl
+				};
+				return fetch('https://awesome-places-1546892091767.firebaseio.com/places.json', {
+					method: 'POST',
+					body: JSON.stringify(placeData)
+				});
+			})
+			.catch(err => {
+				console.log(err);
+				alert('Something went wrong, please try again!');
+				dispatch(uiStopLoading());
+			})
+			.then(res => res.json())
+			.then(parsedRes => {
+				console.log(parsedRes);
+				dispatch(uiStopLoading());
+			});
 	};
 };
 
