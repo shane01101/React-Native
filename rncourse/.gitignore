@@ -1,3 +1,5 @@
+functions\awesome-places.json
+
 # OSX
 #
 .DS_Store
@@ -55,4 +57,4 @@ buck-out/
 # Bundle artifact
 *.jsbundle
 
-/functions/awesome-places.json
+
