@@ -1,4 +1,4 @@
-package com.rncourse;
+package com.rncourse0898;
 
 import android.widget.LinearLayout;
 import android.graphics.Color;
@@ -11,10 +11,10 @@ import com.reactnativenavigation.controllers.SplashActivity;
 public class MainActivity extends SplashActivity {
 
     /**
-     * Returns the name of the main component registered from JavaScript.
-     * This is used to schedule rendering of the component.
+     * Returns the name of the main component registered from JavaScript. This is
+     * used to schedule rendering of the component.
      */
-    //@Override
+    // @Override
     protected String getMainComponentName() {
         return "rncourse";
     }
